@@ -1,0 +1,31 @@
+<MusicScreen>:
+    EffectWidget:
+        effects:[ew.VerticalBlurEffect(size=10).ew.HorizontalBlurEffect(size=20)]
+    FitImage:
+        source: 'music icons/image.png'
+
+    MDBoxLayout:
+        orientation:'vertical'
+        padding: ['10dp', '30dp', '10dp', '50dp']
+        SongCover:
+            size:(250, 250)
+            size_hint: None, None
+            pos_hint: {'center_x':.5}
+            RotatingImage:
+                source:'music icons/image.png'
+                radius:[250]
+        Widget:
+        label:
+            text:'Song Name'
+            bold:'True'
+            font_size:'25sp'
+
+<RotatingImage@FitImage>:
+    angle:0
+    canvas.before:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            origin:self.center
+    canvas.after:
+        PopMatrix
